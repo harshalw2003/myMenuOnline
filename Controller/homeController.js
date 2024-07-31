@@ -3,7 +3,21 @@ const path = require('path');
 const homePage = (req,res)=>{
 
   
-        res.sendFile(path.join(__dirname, '../public', 'index.html'));
+        try{
+
+                res.sendFile(path.join(__dirname, '../public/User', 'home.html'));
+                // res.json({
+                //         success : true,
+                //         message : "Home Page Rendered Successfully"
+                // })
+        }catch(e) {
+                res.json({
+                        success : false,
+                        message : "Failed to Render Home Page",
+                        error : e.message
+                })
+        }
+        
         
         
 }

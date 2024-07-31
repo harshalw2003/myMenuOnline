@@ -1,0 +1,129 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="{% static 'css/styleAdmin.css' %}">
+    <script src="{% static 'js/script.js' %}"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  
+  </head>
+  <body >
+
+    <button href="#" onclick="goBack()" class="back-btn"><img src="{% static  'assets/back_png.png'%}" alt=""></button>
+    <a href="/client/psudoPanel" class="home-btn"><img src="{% static  'assets/home-btn.png'%}" alt=""></a>
+
+
+   
+    <form action="" method="POST" class="container">
+      {% csrf_token %}
+        <h2>Add New Item</h2>
+        {% comment %} <div class="myleftright">
+            <div onclick="open_file1()" class="leftBlock">
+                <input type="file" name="" id='input_file1' hidden>
+                <div class="grayBlock">
+                    <span class="material-symbols-outlined imgSpan ">
+                        photo_library
+                        </span>
+                </div>
+                <p>Add Logo of Iterm</p>
+                <span class="material-symbols-outlined editS ">
+                    edit
+                </span>
+
+
+            </div> {% endcomment %}
+            <div class="rightBlock overflowS">
+                                    <!-- ================== name =============== -->
+                    <div class="inputArea">
+                        <span class="material-symbols-outlined">
+                            border_color
+                            </span>
+                        <input type="text" placeholder="Name" name="itemName" value="{{item.item_name}}" required>
+                    </div>
+                    <!-- ========== Choose Category  ============ -->
+                    <div class="inputArea">
+                        <span class="material-symbols-outlined">
+                            Category
+                            </span>
+                            <!--  !!!!!!!!!!!!!!!!!! need work here !!!!!!!!!!!! -->
+                            <input type="text" value="{{header.header_text}}" placeholder="Category" readonly>
+                           
+                            
+                    </div>
+                    <!-- price -->
+                    <div class="inputArea">
+                        <span class="material-symbols-outlined">
+                            currency_rupee
+                            </span>
+                        <input type="number" placeholder="Price" name="price" value="{{item.price}}" required>
+                    </div>
+                    <!-- description -->
+                    {% comment %} <div class="inputArea">
+                        <span class="material-symbols-outlined">
+                        description
+                        </span>
+                        <input type="text" placeholder="veg or non-veg" name="vegnonveg">
+                    </div> {% endcomment %}
+                    <!-- add tags -->
+                    <div class="inputArea">
+                        <span class="material-symbols-outlined">
+                        sell
+                        </span>
+                        <input type="text" placeholder="Add Tags" name="tags" value="{{item.tags}}">
+                    </div>
+                    <!-- veg or non-veg -->
+                    <div  class="inputArea Check">
+                      <label for="veg">Veg</label>
+                      <input type="radio"  id="vegcheck" name="vegnonveg" value="veg"  
+                      {% if item.vegnonveg  ==  'veg' %}
+                        checked
+                      {% endif %}
+                        >
+
+                      <label for="nonveg">nonveg</label>
+                      <input type="radio"  id="nonvegcheck" name="vegnonveg" value="nonveg" {% if item.vegnonveg == 'nonveg' %}
+                      checked
+                    {% endif %}>
+                      
+                      <label for="nonveg">egg</label>
+                      <input type="radio"  id="nonvegcheck" name="vegnonveg" value="egge" {% if item.vegnonveg == 'egge' %}
+                      checked
+                    {% endif %}>
+                    <!-- <label for="valueV" class="typeVeg">Type</label> -->
+                    </div>
+           
+
+            </div>
+              
+        </div>
+        <!-- <button type="submit" class=" myResNextB btn btn-outline-primary ">save changes</button> -->
+        <div class="buttonListEdit">
+          
+        
+  
+          <button type="submit"  id="saveChangeButton" class="buttonBlockEditItem" name="saveSubmit">
+            <span class="material-symbols-outlined">change_circle</span>
+            <p>Update</p>
+          </button>
+
+          <button type="submit" id="deleteButton" class="buttonBlockEditItem" name="deleteSubmit">
+            <span class="material-symbols-outlined">delete</span>
+            <p>Delete</p>
+          </button>  
+  
+        </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script>
+        function open_file1() {
+          document.getElementById('input_file1').click();
+      }
+    
+    </script>
+  </body>
+</html>

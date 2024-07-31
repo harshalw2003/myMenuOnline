@@ -1,0 +1,63 @@
+{% load static %}
+<nav   class="mmo-mob-nav">
+
+  <!-- <img src="{% static 'assets/'%}" alt="" class="> -->
+
+  <div class="container-fluid">
+
+  <img src="{% static 'images\whiteTextMMO-removebg-preview.png' %}" alt="" class="mmo-nav-logo" >
+
+  
+    <button class="navbar-toggler" style="border: none !important;"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+     <img src="{% static 'assets/hamburger-icon.png' %}" alt="">
+     
+    </button>
+
+    <div style=" background-color: transparent  !important; width: 70vw !important;" class="offcanvas offcanvas-end text-bg-dark toggle-container" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Options</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item d-flex align-items-center " style="color: whitesmoke !important;">
+            <span class="material-symbols-outlined ">home</span>
+            <a class="nav-link active m-2" aria-current="page" href="/client/psudoPanel/" >Home</a>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <span class="material-symbols-outlined">
+              menu_book</span>
+            <a class="nav-link active m-2" href="/{{ menu.menu_link }}">Menu</a>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <span class="material-symbols-outlined">
+              category
+              </span>
+            <a class="nav-link active m-2" href="/client/category/">Category</a>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <span class="material-symbols-outlined">
+              qr_code_scanner
+              </span>
+            <a class="nav-link active m-2" href="#">View QR</a>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <span class="material-symbols-outlined">
+              person
+              </span>
+            <a class="nav-link active m-2" href="#">Profile</a>
+          </li>
+          
+          <li class="nav-item d-flex align-items-center">
+            <span class="material-symbols-outlined">
+              logout
+              </span>
+            <a href="/client/logout/" class="nav-link active m-2" style="font-weight: bold;" onclick="logOut()">log Out</a>
+          </li>
+        
+        </ul>
+       
+      </div>
+    </div>
+  </div>
+</nav>
