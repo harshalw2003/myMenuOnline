@@ -711,6 +711,7 @@ html {
     width: 70%;
     height: 90%;
     border-radius: 50%;
+    border: 1px solid blue;
 }
 
 .edit-profile-btn {
@@ -723,6 +724,19 @@ html {
     /* border: 2px solid red; */
 
 
+}
+
+#upload-profile-input{
+
+    position: absolute;
+    width: 9%;
+    height: 12%;
+    bottom: 9%;
+    right: 25%;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    opacity: 0;
 }
 
 .profile-name-cont {

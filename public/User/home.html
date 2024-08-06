@@ -21,11 +21,11 @@
             <div class="logo"><img src="../static/assets/mmo-logo-white.png" alt=""></div>
             <ul class="nav-tabs">
     
-                <li class="nav-btn"><a href="">Home</a></li>
-                <li class="nav-btn"><a href="">Templates</a></li>
-                <li class="nav-btn" id="admin-btn"><a href="">Admin</a></li>
-                <li class="nav-btn"><a href="">Contact</a></li>
-                <li class="nav-btn"><a href="">About US</a></li>
+                <li class="nav-btn"><a class="nav-anchor" >Home</a></li>
+                <li class="nav-btn"><a class="nav-anchor">Templates</a></li>
+                <li class="nav-btn" id="admin-btn"><a class="nav-anchor" href="">Admin</a></li>
+                <li class="nav-btn"><a class="nav-anchor" >Contact</a></li>
+                <li class="nav-btn"><a class="nav-anchor" >About US</a></li>
             </ul>
     
             
@@ -36,6 +36,8 @@
                 <div class="bars" id="bar2"></div>
                 <div class="bars" id="bar3"></div>
             </label>
+
+            <button  id="logout-btn">Lout out</button>
     
         </nav>
     </div>
@@ -298,60 +300,55 @@
     </footer>
 
 
+   
     <section id="login-section">
-        <div id="login-close">X</div>
+        
+
         <div class="login-container" id="login-container">
+            <div id="login-close">X</div>
 
-  
-            <div class="form-container sign-up-container">
-                <form class="login-form" action="#">
-                    <h1 class="log-form-heading" >Create Account</h1>
-                    
-                    <span>Enter your details</span>
-                    <input class="login-input" type="text" placeholder="Name" />
-                    <input class="login-input" type="tel" placeholder="Phone" />
-                    <input class="login-input" type="email" placeholder="Email" />
-                    <input class="login-input" type="password" placeholder="Password" />
-                    <button class="login-btn">Sign Up</button>
-                </form>
-            </div>
-            <div class="form-container sign-in-container">
-                <form class="login-form"  action="" method="POST">
-      
-                
-                    <h1 class="log-form-heading" >Log in</h1>
-      
-                    {% csrf_token %}
-      
-                    <input class="login-input" type="tel" name = "phone" placeholder="Phone" />
-                    <input  class="login-input" type="password" name = "password" placeholder="Password" />
-                    <a id="forget-pass-login" href="#">Forgot your password?</a>
-                    <button class="login-btn" type = "submit">Submit</button>
-      
-                </form>
-            </div>
-            <div class="overlay-container">
-                <div class="overlay">
-                    <div class="overlay-panel overlay-left">
-                        <h1 class="log-form-heading" >Welcome Back!</h1>
-                        <p class="login-para">Already have an account <br> Please Sign in </p>
-                        <button class="ghost login-btn" id="signIn">Sign In</button>
-                    </div>
-                    <div class="overlay-panel overlay-right">
-                        <h1 class="log-form-heading">Hello, Friend! <br> Don't have an account!</h1>
-                        <p class="login-para">Enter your personal details and we will make an account for you</p>
-                        <button class="ghost login-btn" id="signUp">Sign Up</button>
-                    </div>
+            <form action="" id="login-form">
+
+                <h1 class="login-heading">Log in</h1>
+                <div class="input-cont">
+
+                    <input type="text" id="phone" placeholder="Phone">
+                    <input type="password" id="pass" placeholder="Password">
+
                 </div>
-            </div>
-        </div>
-    </section>
+                <p class="forgot-pass">Forgot Password?</p>
 
+                <input type="submit" value="Submit" id="login-submit-btn">
+                <p id="signup-para">Don't have an account? <span>Sign up</span></p>
+            </form>
+
+            <form action="" id="signup-form">
+
+                <h1 class="signup-heading">Sign up</h1>
+                <div class="input-cont">
+
+                    <input type="text" id="name" placeholder="Name">
+                    <input type="text" id="signup-phone" placeholder="Phone">
+                    <input type="email" id="email" placeholder="Email">
+                    <input type="password" id="signup-pass" placeholder="Password">
+
+                </div>
+               
+
+                <input type="submit" value="Submit" id="signup-submit-btn">
+                <p id="login-para">Already have an account? <span>Log in</span></p>
+            </form>
+
+        </div>
+        
+    </section>
 
 
 </body>
 
 <script src="../static/js/home.js"></script>
+<script src="../static/js/login.js"></script>
+<script src="../static/js/navbar.js"></script>
 
 
 </html>

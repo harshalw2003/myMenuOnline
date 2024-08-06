@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 const app = express();
 dotenv.config()
 const port = process.env.PORT || 5000;
@@ -17,6 +18,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //middlewares
 app.use(express.json())
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
 app.use(homeRoutes)
 app.use('/user',userRoutes)
 

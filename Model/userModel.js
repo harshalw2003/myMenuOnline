@@ -20,7 +20,30 @@ const userSchema = new mongoose.Schema([{
         type: String,
         required: true
     },
-
+    profilePicture: { 
+        type: String,
+        required: false,
+        default : "../static/assets/profile-png.png"
+    },
+    restaurantName: {
+        type : String,
+        required: false,
+        default : "Your restaurant name here .."
+    },
+    restaurantAdress: {
+        type : String,
+        required: false,
+        default : "Your restaurant address here .."
+    },
+    qrCode: {
+        type: String,
+        required: false
+     },
+    token : {
+        type : String,
+        required : false,
+        default : ""
+    },
     Subscription_isActive: {
         type: Boolean,
         default: false,
