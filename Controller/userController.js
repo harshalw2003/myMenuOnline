@@ -6,34 +6,20 @@ const multer = require('multer');
 const QRCode = require('qrcode');
 const path = require('path');
 
-
-
-
+// Set up multer for file uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '/home/harshalw19/Desktop/HW/menuMastermind//public/static/user-profiles');
+    cb(null, '/home/harshalw19/Desktop/HW/menuMastermind/public/static/user-profiles');
   },
   filename: function (req, file, cb) {
-    cb(null, `${new Date()}${path.extname(file.originalname)}`);
+    cb(null, `${req.user.name}-profile${path.extname(file.originalname)}`);
   }
 });
+
 
 const upload = multer({ storage: storage });
 
 
-const uploadProfile = async (req, res, next) => {
-  try {
-      const user = await userModel.findById(req.user._id);
-      user.profilePicture = req.file.path;
-      await user.save();
-      res.json({
-        success :'true',
-        message :'File uploaded successfully'});
-      // console.log('File uploaded successfully')
-    } catch (error) {
-      console.log(error)
-    }
-}
 
 const registerUser = async (req, res) => {
 
@@ -60,9 +46,9 @@ const registerUser = async (req, res) => {
       // Generate QR code
       const qrCodePath = `/home/harshalw19/Desktop/HW/menuMastermind/public/static/qrcodes/${userDetails.name}-${Date.now()}.png`;
       QRCode.toFile(qrCodePath, userDetails.name, function (err) {
-        if (err){
+        if (err) {
           return res.status(500).send('Error generating QR code');
-          }
+        }
         newUser.qrCode = qrCodePath;
 
         const user = newUser.save()
@@ -73,9 +59,9 @@ const registerUser = async (req, res) => {
         })
 
       })
-           
 
-    }else {
+
+    } else {
 
       res.json({
         success: false,
@@ -170,6 +156,28 @@ const updateDetails = async (req, res) => {
 }
 
 
+const uploadProfile = async (req, res) => {
+
+  try { 
+    // console.log(req)
+    const user = await userModel.findById(req.user._id);
+    user.profilePicture = req.file.path;
+    // await user.findByIdAndUpdate(user._id,{profilePicture : req.file.path})
+    await user.save();
+    res.json({
+      sucess : true,
+      message : 'File uploaded successfully'});
+  } catch (error) {
+    res.status(400).json(
+      {
+        sucess : false,
+        message : 'Error uploading file'}
+    );
+  }
+
+}
+
+
 const logoutUser = async (req, res) => {
 
   console.log("User logout API hit")
@@ -244,11 +252,11 @@ const adminDashboard = async (req, res) => {
 module.exports = {
   registerUser,
   loginUser,
-  upload,
   uploadProfile,
   logoutUser,
   userAdmin,
   adminDashboard,
   updateDetails,
+  upload,
 
 }

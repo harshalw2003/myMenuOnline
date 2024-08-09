@@ -78,12 +78,10 @@ const loadAdminPageContent = () => {
 
             }
 
-
             //setting profile picture
-            console.log(document.getElementById("user-profile-image"))
-            document.getElementById("user-profile-image").setAttribute("src", result.userDetails.profilePicture)
-
-
+            const profile_image = document.getElementById("user-profile-image")
+            // profile_image.setAttribute("src", result.userDetails.profilePicture)
+            console.log(result.userDetails.profilePicture)
 
             //Profile JS
             const profile_inputs = document.querySelectorAll('.input-cont input')
@@ -94,6 +92,8 @@ const loadAdminPageContent = () => {
             profile_inputs[3].value = result.userDetails.email
             profile_inputs[4].value = result.userDetails.phone
 
+            // const profile_image =document.getElementById('user-profile-image')
+            // profile_image.src = "/home/harshalw19/Desktop/HW/menuMastermind/public/static/user-profiles"+result.userDetails.profilePicture
 
 
         })
@@ -132,14 +132,12 @@ const updateProfileDetails = () => {
             result = JSON.parse(data)
             alert(result.message)
 
-
-
         })
         .catch((error) => {
             console.log(error);
         });
 
-    upadteProfilePicture()
+    
 
 
 
@@ -148,29 +146,23 @@ const updateProfileDetails = () => {
 
 }
 
-const upadteProfilePicture = () => {
+const upadteProfilePicture = async (event) => {
+    event.preventDefault();
     console.log('Update profile picture button clicked')
     const profile_picture = document.getElementById('upload-profile-input').files[0]
+    console.log(profile_picture)
     const formData = new FormData();
     formData.append('profilePicture', profile_picture);
+    console.log(formData)
 
-    fetch('http://localhost:5000/user/upload-profile', {
+    const response = await fetch('http://localhost:5000/user/upload-profile', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
         body: formData
-    })
-        .then(response => response.text())
-        .then(data => {
-            result = JSON.parse(data)
-            console.log(result.message);
+      }); 
 
-
-
-        })
-
-
+    const data = await response.text();
+    console.log(data)
+    // location.reload();
 
 }
 
@@ -185,11 +177,18 @@ document.addEventListener("DOMContentLoaded", (event) => {
     //Update Profile
     document.getElementById("update-profile-btn").addEventListener('click', updateProfileDetails)
 
+   document.getElementById("upload-profile-input").addEventListener('input', () =>{
+
+    document.getElementById("upload-profile-btn").style.display ="block"
+
+   })
+
+
+   document.getElementById("profile-form").addEventListener('submit', upadteProfilePicture)
+
+
+
 })
-
-
-
-
 
 
 

@@ -690,6 +690,7 @@ html {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    position: relative;
 
 }
 
@@ -711,7 +712,7 @@ html {
     width: 70%;
     height: 90%;
     border-radius: 50%;
-    border: 1px solid blue;
+    border: 1px solid rgb(117, 117, 175);
 }
 
 .edit-profile-btn {
@@ -725,6 +726,7 @@ html {
 
 
 }
+
 
 #upload-profile-input{
 
@@ -754,10 +756,22 @@ html {
 
     color: #192655;
     font-family: Poppins;
-    font-size :3vmax;
+    font-size :2vmax;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+}
+
+#upload-profile-btn{
+
+    background: rgba(13, 110, 253, 0.80);
+    border: none;
+    padding : 5px;
+    border-radius: 5px;
+    color: white;
+    position: absolute;
+    bottom: -5vh;
+    display: none;
 }
 
 .profile-right {
@@ -796,7 +810,7 @@ html {
     padding-left: 2%;
     color: #192655;
     font-family: Poppins;
-    font-size: 2vmax;
+    font-size: 1.5vmax;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
