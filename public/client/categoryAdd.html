@@ -1,31 +1,31 @@
-{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
-    <link rel="stylesheet" href="{% static 'css/styleAdmin.css' %}">
+    <link rel="stylesheet" href="../static/css/styleAdmin.css">
 
-    <script src="{% static 'js/script.js' %}"></script>
+    <script src="../static/js/script.js"></script>
+    <script src="../static/js/categoryAdd.js"></script>
 
     
     
   </head>
   <body>
 
-    <button href="/client/psudoPanel" class="back-btn"><img src="{% static  'assets/back_png.png'%}" alt=""></button>
+    <button href="/client/psudoPanel" class="back-btn"><img src="../static/assets/back_png.png" alt=""></button>
        
         
-    <form action="" method="POST" class="container" enctype='multipart/form-data'>
-      {% csrf_token %}
+    <form id="categoryAddForm"  class="container" enctype='multipart/form-data'>
+     
         <h2>Category Details</h2>
         <div class="myleftright">
             <div  class="leftBlock">
-                <input  accept="image/x-png,image/gif,image/jpeg"  type="file" name="image" id='input_file1' hidden>
+                <input    type="file" name="image" id='input_file1' hidden>
                 <div  onclick="open_file1()" class="grayBlock">
                     <span  class="material-symbols-outlined imgSpan ">
-                        photo_library
+                        <!-- photo_library -->
                         </span>
                 </div>
                 <p id="fileName">Add Logo of Category</p>
@@ -41,27 +41,24 @@
                     <span class="material-symbols-outlined">
                         border_color
                         </span>
-                    <input type="text" placeholder="Category Name" name="categoryName" required>
+                    <input type="text" id="categoryName" placeholder="Category Name" name="categoryName" required>
                   </div>
                   <!-- phone no. -->
                   <div class="inputArea">
                       <span class="material-symbols-outlined">
                         description
                         </span>
-                        <input  type="text" placeholder="Description" name="description" size="10" >
+                        <input  type="text" id="categoryDescription" placeholder="Description" name="description" size="10" >
                   </div>
            
 
             </div>
               
         </div>
-        {% comment %} onclick="parent.location.href='item.html'" {% endcomment %}
-        <!-- <button type="submit"  class=" myResNextB btn btn-outline-primary ">Next</button> -->
+     
         <div class="buttonListEdit">
           
-       
-
-          <button type="submit" id="saveChangeButton" class="buttonBlockEditItem">
+          <button type="submit"  class="buttonBlockEditItem">
             <span class="material-symbols-outlined">add_circle</span>
             <p>Add</p>
           </button>

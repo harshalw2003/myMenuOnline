@@ -9,10 +9,10 @@ const path = require('path');
 // Set up multer for file uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '/home/harshalw19/Desktop/HW/menuMastermind/public/static/user-profiles');
+    cb(null, './public/static/user-profiles');
   },
   filename: function (req, file, cb) {
-    cb(null, `${req.user.name}-profile${path.extname(file.originalname)}`);
+    cb(null, `${Date.now()}${req.user.name}-profile${path.extname(file.originalname)}`);
   }
 });
 
@@ -44,7 +44,7 @@ const registerUser = async (req, res) => {
       const newUser = new userModel(userDetails);
       console.log(newUser);
       // Generate QR code
-      const qrCodePath = `/home/harshalw19/Desktop/HW/menuMastermind/public/static/qrcodes/${userDetails.name}-${Date.now()}.png`;
+      const qrCodePath = `./public/static/qrcodes/${userDetails.name}-qrCode-${Date.now()}.png`;
       QRCode.toFile(qrCodePath, userDetails.name, function (err) {
         if (err) {
           return res.status(500).send('Error generating QR code');

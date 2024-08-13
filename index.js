@@ -11,6 +11,7 @@ const port = process.env.PORT || 5000;
 //importing Routes
 const homeRoutes = require('./Routes/homeRoutes.js');
 const userRoutes = require('./Routes/userRoutes.js');
+const categoryRoutes = require('./Routes/categoryRoutes.js');
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -21,6 +22,7 @@ app.use(express.json())
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(homeRoutes)
+app.use('/category',categoryRoutes)
 app.use('/user',userRoutes)
 
 

@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema([{
     profilePicture: { 
         type: String,
         required: false,
-        default : "../static/assets/profile-png.png"
+        default : "public/static/assets/profile-png.png"
     },
     restaurantName: {
         type : String,

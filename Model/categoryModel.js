@@ -10,7 +10,12 @@ const categorySchema = new mongoose.Schema([{
         type: String,
         required: false
     },
-    categoryPhoto :{
+    user :{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    categoryPicture :{
 
         type: String,
         required: false,

@@ -78,10 +78,9 @@ const loadAdminPageContent = () => {
 
             }
 
-            //setting profile picture
-            const profile_image = document.getElementById("user-profile-image")
-            // profile_image.setAttribute("src", result.userDetails.profilePicture)
-            console.log(result.userDetails.profilePicture)
+           
+
+        
 
             //Profile JS
             const profile_inputs = document.querySelectorAll('.input-cont input')
@@ -92,8 +91,27 @@ const loadAdminPageContent = () => {
             profile_inputs[3].value = result.userDetails.email
             profile_inputs[4].value = result.userDetails.phone
 
-            // const profile_image =document.getElementById('user-profile-image')
-            // profile_image.src = "/home/harshalw19/Desktop/HW/menuMastermind/public/static/user-profiles"+result.userDetails.profilePicture
+
+             //setting profile picture
+             const profile_image = document.getElementsByClassName("user-profile-image")
+             console.log(profile_image)
+             let  src = result.userDetails.profilePicture
+             src= "../"+src.slice(7)
+             console.log(result.userDetails.profilePicture)
+             console.log(src)
+             for(let i=0; i<profile_image.length; i++){
+ 
+                 profile_image[i].setAttribute("src", src)
+ 
+             }
+
+
+
+           //QR section loading js
+
+           const qr_code_image = document.getElementById("user-qr-code")
+           console.log(qr_code_image)
+           console.log(result.userDetails.qrCode)
 
 
         })
@@ -153,7 +171,7 @@ const upadteProfilePicture = async (event) => {
     console.log(profile_picture)
     const formData = new FormData();
     formData.append('profilePicture', profile_picture);
-    console.log(formData)
+    
 
     const response = await fetch('http://localhost:5000/user/upload-profile', {
         method: 'POST',
@@ -162,7 +180,7 @@ const upadteProfilePicture = async (event) => {
 
     const data = await response.text();
     console.log(data)
-    // location.reload();
+    location.reload();
 
 }
 
